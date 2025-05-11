@@ -10,7 +10,8 @@ class Settings(BaseSettings):
     API_PORT: int = Field(default=8000)
     
     # CORS
-    CORS_ORIGINS: List[str] = Field(default=["http://localhost:3000"])
+    # Accepts a comma-separated list in the .env file, e.g. "http://localhost:3000,https://your-frontend.vercel.app"
+    CORS_ORIGINS: List[str] = Field(default=["http://localhost:3000"], description="Comma-separated list of allowed CORS origins.")
     
     # Database
     DB_HOST: str = Field(default="localhost")
@@ -55,6 +56,12 @@ class Settings(BaseSettings):
     class Config:
         env_file = [".env.local", ".env"]
         case_sensitive = True
+        # Parse comma-separated CORS_ORIGINS
+        @classmethod
+        def parse_env_var(cls, field_name, raw_value):
+            if field_name == "CORS_ORIGINS" and isinstance(raw_value, str):
+                return [origin.strip() for origin in raw_value.split(",") if origin.strip()]
+            return raw_value
 
 # Create singleton settings instance
 settings = Settings()
