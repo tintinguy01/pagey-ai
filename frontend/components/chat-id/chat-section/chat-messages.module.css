@@ -1,0 +1,61 @@
+.markdown-pre-line {
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--tw-prose-invert, var(--foreground, #f1f5f9)); /* fallback to a very light gray */
+}
+
+.markdown-pre-line ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+.markdown-pre-line ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+
+.markdown-pre-line h1,
+.markdown-pre-line h2,
+.markdown-pre-line h3,
+.markdown-pre-line h4,
+.markdown-pre-line h5,
+.markdown-pre-line h6 {
+  font-weight: 700;
+  margin: 0.7em 0 0.3em 0;
+}
+
+.markdown-pre-line p,
+.markdown-pre-line ul,
+.markdown-pre-line ol {
+  margin: 0.3em 0;
+}
+
+.markdown-pre-line li {
+  margin: 0.1em 0;
+}
+
+.markdown-pre-line strong {
+  font-weight: 600;
+}
+
+.markdown-pre-line ol + p,
+.markdown-pre-line ul + p {
+  margin-top: 1em;
+}
+
+.markdown-pre-line-highlight {
+  background-color: rgba(255, 255, 0, 0.3);
+  border-radius: 3px;
+  padding: 2px 4px;
+  margin: 0 -2px;
+  display: inline;
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(255, 200, 0, 0.4);
+  font-weight: 500;
+}
+
+/* For dark mode */
+:global(.dark) .markdown-pre-line-highlight {
+  background-color: rgba(255, 255, 0, 0.2);
+  box-shadow: 0 0 0 1px rgba(255, 200, 0, 0.3);
+}

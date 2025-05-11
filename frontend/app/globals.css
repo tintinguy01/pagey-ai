@@ -1,0 +1,228 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  
+  /* Light theme - Blue color scheme */
+  --background: #FFFFFF;
+  --foreground: #1A3C5B;
+  --card: #FFFFFF;
+  --card-foreground: #1A3C5B;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A3C5B;
+  --primary: #1389FD; /* Main blue color */
+  --primary-foreground: #FFFFFF;
+  --secondary: #EDF6FF; /* Light blue */
+  --secondary-foreground: #1389FD;
+  --muted: #F5F9FF;
+  --muted-foreground: #73A5C6;
+  --accent: #91C8FF; /* Accent blue */
+  --accent-foreground: #1A3C5B;
+  --destructive: #FF5C5C;
+  --border: rgba(19, 137, 253, 0.15);
+  --input: rgba(19, 137, 253, 0.15);
+  --ring: rgba(19, 137, 253, 0.4);
+  
+  /* Chart colors */
+  --chart-1: #1389FD;
+  --chart-2: #73A5C6;
+  --chart-3: #91C8FF;
+  --chart-4: #5CB8E4;
+  --chart-5: #2A78C3;
+  
+  /* Sidebar colors */
+  --sidebar: #F5F9FF;
+  --sidebar-foreground: #1A3C5B;
+  --sidebar-primary: #1389FD;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EDF6FF;
+  --sidebar-accent-foreground: #1389FD;
+  --sidebar-border: rgba(19, 137, 253, 0.15);
+  --sidebar-ring: rgba(19, 137, 253, 0.4);
+}
+
+.dark {
+  /* Dark theme - Blue color scheme with darker tones */
+  --background: #0F2132; /* Dark blue background */
+  --foreground: #FFFFFF;
+  --card: #183043; /* Slightly lighter dark blue */
+  --card-foreground: #FFFFFF;
+  --popover: #183043;
+  --popover-foreground: #FFFFFF;
+  --primary: #1389FD; /* Keep the same blue for consistency */
+  --primary-foreground: #FFFFFF;
+  --secondary: #234869; /* Darker blue */
+  --secondary-foreground: #FFFFFF;
+  --muted: #1A3C5B; /* Mid dark blue */
+  --muted-foreground: #73A5C6;
+  --accent: #2A78C3; /* Darker accent blue */
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF5C5C;
+  --border: rgba(19, 137, 253, 0.3);
+  --input: rgba(19, 137, 253, 0.3);
+  --ring: rgba(19, 137, 253, 0.6);
+  
+  /* Chart colors */
+  --chart-1: #1389FD;
+  --chart-2: #73A5C6;
+  --chart-3: #91C8FF;
+  --chart-4: #5CB8E4;
+  --chart-5: #2A78C3;
+  
+  /* Sidebar colors */
+  --sidebar: #183043;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #1389FD;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #234869;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(19, 137, 253, 0.3);
+  --sidebar-ring: rgba(19, 137, 253, 0.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* React-PDF TextLayer styles */
+.react-pdf__Page__textContent {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  cursor: text;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  line-height: 1.0;
+  transform-origin: 0% 0%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.react-pdf__Page__textContent span {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  transform-origin: 0% 0%;
+  cursor: text;
+  pointer-events: auto;
+}
+
+.react-pdf__Page__textContent span::selection {
+  background-color: rgba(0, 0, 255, 0.3);
+  color: transparent;
+}
+
+.react-pdf__Page__annotations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.react-pdf__Page__annotations * {
+  pointer-events: auto;
+}
+
+.react-pdf__Page__canvas {
+  z-index: 1;
+  position: relative;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;  /* Improves text clarity in Chrome */
+  image-rendering: crisp-edges;                /* Modern browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);                    /* Force GPU acceleration */
+}
+
+/* Additional PDF viewer styles */
+.pdf-page-indicator {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--card);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--card-foreground);
+  z-index: 50;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 200ms ease-in-out;
+}
+
+/* Hide scrollbar for PDF container in webkit browsers */
+.pdf-main-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.pdf-main-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Ensure high quality PDF rendering */
+.high-quality-page canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
