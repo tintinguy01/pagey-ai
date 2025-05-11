@@ -49,7 +49,7 @@ export const DocumentsList = ({
       await uploadDocument(file, chatId, userId);
       toast({
         title: "Upload successful",
-        description: `Document '${file.name}' uploaded successfully!`,
+        description: "Your PDF(s) have been added to the chat.",
       });
       if (onDocumentDeleted) onDocumentDeleted(); // reuse to refresh list
     } catch {
