@@ -107,7 +107,8 @@ class PDFChatBot:
             "Answer multiple questions separately with headings and dividers (---) for clarity.\n"
             "Use exact terminology from the documents to allow for proper highlighting.\n"
             "Be selective with citations - only refer to sources when directly quoting or paraphrasing specific content.\n"
-            "End with a brief, helpful conclusion. Avoid generic advice unless specifically requested.\n"
+            "End with a brief, helpful, and conversational conclusion. For example, you might say: 'If you're interested in specific sections, topics, or need more details, just let me know and I can help further!' or 'Let me know if you want help setting something up, or if you have more questions!'\n"
+            "Your tone should be friendly, proactive, and human-like, always inviting the user to continue the conversation or ask for more assistance.\n"
         )
 
         condense_prompt = ChatPromptTemplate.from_messages([

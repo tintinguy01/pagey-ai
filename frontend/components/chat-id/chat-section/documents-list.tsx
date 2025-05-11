@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FileText, MoreHorizontal, Upload, Trash2 } from "lucide-react";
-import { Document, deleteDocument } from "@/api/client";
+import { Document, deleteDocument, uploadDocument } from "@/api/client";
 import { useToast } from "@/hooks/use-toast";
 import {
   DropdownMenu,
@@ -37,6 +37,26 @@ export const DocumentsList = ({
 }: DocumentsListProps) => {
   const { toast } = useToast();
   const [documentToDelete, setDocumentToDelete] = useState<number | null>(null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      // You may need to get chatId and userId from props/context
+      await uploadDocument(file, /* chatId */ 0, /* userId */ "");
+      toast({
+        title: "Upload successful",
+        description: `Document '${file.name}' uploaded successfully!`,
+      });
+      if (onDocumentDeleted) onDocumentDeleted(); // reuse to refresh list
+    } catch {
+      toast({
+        title: "Upload failed",
+        description: "Failed to upload document. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
   
   // Format file size helper
   const formatFileSize = (bytes: number): string => {
@@ -104,17 +124,19 @@ export const DocumentsList = ({
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mt-6 bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium flex items-center gap-2"
-          onClick={() => {
-            toast({
-              title: "Coming Soon",
-              description: "Document upload from chat coming in the next update!",
-            });
-          }}
+          className="mt-6 bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium flex items-center gap-2 cursor-pointer"
+          onClick={() => fileInputRef.current?.click()}
         >
           <Upload className="h-4 w-4" />
           Upload Document
         </motion.button>
+        <input
+          type="file"
+          accept="application/pdf"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          onChange={handleFileChange}
+        />
       </div>
     );
   }
