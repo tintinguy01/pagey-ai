@@ -32,7 +32,13 @@ const ReactPDFViewer = dynamic<{
 import { ChatMessages } from "@/components/chat-id/chat-section/chat-messages";
 import { DocumentsList } from "@/components/chat-id/chat-section/documents-list";
 
-export default function ChatPage({ params }: { params: { chatId: string } }) {
+interface ChatPageProps {
+  params: {
+    chatId: string;
+  };
+}
+
+export default function ChatPage({ params }: ChatPageProps) {
   const chatIdString = params.chatId;
   
   const { navigateWithLoading } = useLoadingNavigation();

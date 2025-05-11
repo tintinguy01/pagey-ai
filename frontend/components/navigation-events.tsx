@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useLoading } from "@/components/loading-provider";
 
@@ -8,7 +8,7 @@ import { useLoading } from "@/components/loading-provider";
  * Component that listens to navigation events and shows loading spinners
  * This component should be included in the root layout
  */
-export function NavigationEvents() {
+function NavigationEventsContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { startLoading, stopLoading } = useLoading();
@@ -97,4 +97,13 @@ export function NavigationEvents() {
   }, [pathname, searchParams, stopLoading]);
   
   return null;
+}
+
+// Wrap the component in a Suspense boundary
+export function NavigationEvents() {
+  return (
+    <Suspense fallback={null}>
+      <NavigationEventsContent />
+    </Suspense>
+  );
 } 
