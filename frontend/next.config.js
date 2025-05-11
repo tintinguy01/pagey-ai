@@ -43,7 +43,7 @@ const nextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://*.clerk.accounts.dev",
               
               // Connect sources - add localhost and your API
-              "connect-src 'self' blob: data: https://*.clerk.accounts.dev https://api.clerk.dev http://localhost:* https://localhost:* http://127.0.0.1:* https://127.0.0.1:* http://*.local:* ws://localhost:* wss://localhost:* ws://127.0.0.1:* wss://127.0.0.1:*",
+              "connect-src 'self' blob: data: https://*.clerk.accounts.dev https://api.clerk.dev http://localhost:* https://localhost:* http://127.0.0.1:* https://127.0.0.1:* http://*.local:* ws://localhost:* wss://localhost:* ws://127.0.0.1:* wss://127.0.0.1:* https://pagey-ai-backend.onrender.com",
               
               // Frame sources
               "frame-src 'self' blob: data: https://*.clerk.accounts.dev",
