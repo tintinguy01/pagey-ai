@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { useTheme } from "next-themes";
 import { SignOutButton } from "@clerk/nextjs";
 import { useLoadingNavigation } from "@/hooks/use-loading-navigation";

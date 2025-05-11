@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { ArrowRight, FileText, Info, Upload, X } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";

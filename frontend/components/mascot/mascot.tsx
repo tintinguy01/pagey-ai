@@ -228,15 +228,15 @@ export function Mascot({
         
         {/* Pupils - Animated happy eyes */}
         <motion.circle
-          cx="16"
-          cy="28"
+          cx={currentMood === "thinking" ? "15.5" : "16"}
+          cy={currentMood === "thinking" ? "27" : "28"}
           r="2"
           fill="#0F2132"
           animate={eyesControl}
         />
         <motion.circle
-          cx="32"
-          cy="28"
+          cx={currentMood === "thinking" ? "31.5" : "32"}
+          cy={currentMood === "thinking" ? "27" : "28"}
           r="2"
           fill="#0F2132"
           animate={eyesControl}
@@ -274,6 +274,19 @@ export function Mascot({
             scale: currentMood === "excited" ? 1.2 : 1,
           }}
         />
+
+        {/* Hand-on-chin SVG path for thinking mode */}
+        {currentMood === "thinking" && (
+          <motion.path
+            d="M 20 44 Q 24 48 28 44"
+            stroke="#0F2132"
+            strokeWidth="2"
+            fill="none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+        )}
       </motion.svg>
       
       {/* Sparkles for excited mode */}
@@ -303,10 +316,10 @@ export function Mascot({
         <motion.div 
           className="absolute -top-6 -right-4 text-primary text-xl"
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1, y: [-2, 2, -2] }}
+          animate={{ opacity: 1, scale: [1, 1.1, 1], y: [-2, 2, -2] }}
           transition={{ 
             opacity: { duration: 0.3 },
-            scale: { duration: 0.3 },
+            scale: { duration: 1, repeat: Infinity, repeatType: "reverse" },
             y: { repeat: Infinity, duration: 1.5 } 
           }}
         >

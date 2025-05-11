@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 
 export function Footer() {
   return (

@@ -23,19 +23,14 @@ class PDFChatBot:
     def __init__(self, chat_id: int, db: Session):
         self.chat_id = chat_id
         self.db = db
-        self.chat = db.query(Chat).filter(Chat.id == chat_id).first()
-        self.documents = self.chat.documents if self.chat else []
         self.embeddings = OpenAIEmbeddings(api_key=settings.OPENAI_API_KEY)
         self.vectorstore = None
         self.retriever = None
 
-        if self.documents:
-            self._initialize_retrieval_chain()
-
-    def _initialize_retrieval_chain(self):
+    def _initialize_retrieval_chain(self, documents):
         documents_text = []
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=100)
-        for document in self.documents:
+        for document in documents:
             document_contents = (
                 self.db.query(DocumentContent)
                 .filter(DocumentContent.document_id == document.id)
@@ -62,10 +57,12 @@ class PDFChatBot:
             self.retriever = self.vectorstore.as_retriever(search_kwargs={"k": 10})
 
     async def process_message(self, user_message: str) -> Dict[str, Any]:
-        if not self.chat:
+        # Always fetch the latest chat and documents
+        chat = self.db.query(Chat).filter(Chat.id == self.chat_id).first()
+        if not chat:
             raise ValueError(f"Chat with ID {self.chat_id} not found")
-
-        self._initialize_retrieval_chain()
+        documents = chat.documents if chat else []
+        self._initialize_retrieval_chain(documents)
 
         relevant_docs = []
         if self.vectorstore:

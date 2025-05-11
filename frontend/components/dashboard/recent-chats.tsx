@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronRight, FileUp, MessageSquare, Plus } from "lucide-react";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { useUser } from "@clerk/nextjs";
 import { formatDistanceToNow } from "date-fns";
 import { getChats } from "@/api/client";

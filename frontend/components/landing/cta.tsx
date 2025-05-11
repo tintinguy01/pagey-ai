@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { useLoadingNavigation } from "@/hooks/use-loading-navigation";
 
 const MotionLink = motion(Link);

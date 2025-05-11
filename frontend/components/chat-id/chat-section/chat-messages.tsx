@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { FileText, Send, Upload } from "lucide-react";
 import { Message, chatWithAI, uploadDocument } from "@/api/client";
 import { useUser } from "@clerk/nextjs";
@@ -13,6 +13,7 @@ import remarkBreaks from "remark-breaks";
 import styles from "./chat-messages.module.css";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { AnimatedThinkingText } from "@/components/mascot/AnimatedThinkingText";
 
 interface ChatMessagesProps {
   messages: Message[];
@@ -409,7 +410,7 @@ export const ChatMessages = ({ messages, chatId, onNewMessage, onSourceClick, on
                   <span className="font-medium">Pagey AI</span>
                   <span className="text-xs text-muted-foreground ml-auto">...</span>
                 </div>
-                <div className="italic text-muted-foreground">Pagey is thinking...</div>
+                <AnimatedThinkingText />
               </div>
             </div>
           </motion.div>

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Calendar } from "lucide-react";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { motion } from "framer-motion";
 
 export function WelcomeSection() {

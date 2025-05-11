@@ -13,7 +13,7 @@ import {
   X
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import { TrashDialog } from "@/components/dashboard/trash-dialog";
 import { UserSection } from "@/components/dashboard/user-section";
 import { SettingsSection } from "@/components/dashboard/settings-section";

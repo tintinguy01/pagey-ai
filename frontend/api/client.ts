@@ -214,6 +214,7 @@ export async function getDocuments(chatId?: number, userId?: string): Promise<Do
 }
 
 export async function uploadDocument(file: File, chatId: number, userId: string): Promise<Document> {
+  // NOTE: After calling this, always refetch documents for the chat to ensure the UI is up to date.
   try {
     const formData = new FormData();
     formData.append('file', file);
@@ -271,6 +272,7 @@ export async function getMessages(chatId: number): Promise<Message[]> {
 }
 
 export async function sendMessage(chatId: number, content: string): Promise<Message> {
+  // NOTE: After calling this, always refetch messages for the chat to ensure the UI is up to date.
   const response = await fetch(`${API_BASE_URL}/api/messages`, {
     method: 'POST',
     ...DEFAULT_FETCH_OPTIONS,

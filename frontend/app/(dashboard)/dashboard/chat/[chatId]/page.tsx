@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Mascot } from "@/components/mascot";
+import { Mascot } from "@/components/mascot/mascot";
 import {
   ChevronLeft,
   ChevronRight,
@@ -18,6 +18,7 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader,
 import { toast } from "@/hooks/use-toast";
 import dynamic from "next/dynamic";
 import { useUser } from "@clerk/nextjs";
+import { AnimatedThinkingText } from "@/components/mascot/AnimatedThinkingText";
 
 // Import our components
 const ReactPDFViewer = dynamic<{
@@ -342,8 +343,9 @@ export default function ChatPage({ params }: ChatPageProps) {
             <div className="h-6 w-40 bg-secondary rounded-md animate-pulse"></div>
           </div>
         </header>
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex flex-col items-center justify-center gap-4">
           <Mascot size="md" mood="thinking" />
+          <AnimatedThinkingText />
         </div>
       </div>
     );
