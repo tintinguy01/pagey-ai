@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter, AlertDialogAction, AlertDialogCancel } from "@/components/ui/alert-dialog";
 import { toast } from "@/hooks/use-toast";
 import dynamic from "next/dynamic";
+import { useUser } from "@clerk/nextjs";
 
 // Import our components
 const ReactPDFViewer = dynamic<{
@@ -42,6 +43,7 @@ export default function ChatPage({ params }: ChatPageProps) {
   const chatIdString = params.chatId;
   
   const { navigateWithLoading } = useLoadingNavigation();
+  const { user } = useUser();
   
   // Handle special case for "/dashboard/chat/new" URL
   React.useEffect(() => {
@@ -522,6 +524,8 @@ export default function ChatPage({ params }: ChatPageProps) {
                 selectedDocId={selectedDocId}
                 setSelectedDocId={setSelectedDocId}
                 onDocumentDeleted={refreshDocuments}
+                chatId={chatId}
+                userId={user?.id || ""}
               />
             </div>
           )}

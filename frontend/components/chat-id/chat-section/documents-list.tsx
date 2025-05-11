@@ -27,13 +27,17 @@ interface DocumentsListProps {
   selectedDocId: string | null;
   setSelectedDocId: (id: string) => void;
   onDocumentDeleted?: () => void;
+  chatId: number;
+  userId: string;
 }
 
 export const DocumentsList = ({ 
   documents, 
   selectedDocId, 
   setSelectedDocId,
-  onDocumentDeleted
+  onDocumentDeleted,
+  chatId,
+  userId
 }: DocumentsListProps) => {
   const { toast } = useToast();
   const [documentToDelete, setDocumentToDelete] = useState<number | null>(null);
@@ -42,8 +46,7 @@ export const DocumentsList = ({
     const file = e.target.files?.[0];
     if (!file) return;
     try {
-      // You may need to get chatId and userId from props/context
-      await uploadDocument(file, /* chatId */ 0, /* userId */ "");
+      await uploadDocument(file, chatId, userId);
       toast({
         title: "Upload successful",
         description: `Document '${file.name}' uploaded successfully!`,
