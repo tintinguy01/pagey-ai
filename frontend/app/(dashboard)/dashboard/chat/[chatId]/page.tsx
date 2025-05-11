@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, use, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Mascot } from "@/components/mascot";
 import {
   ChevronLeft,
@@ -32,10 +32,8 @@ const ReactPDFViewer = dynamic<{
 import { ChatMessages } from "@/components/chat-id/chat-section/chat-messages";
 import { DocumentsList } from "@/components/chat-id/chat-section/documents-list";
 
-export default function ChatPage({ params }: { params: { chatId: string } | Promise<{ chatId: string }> }) {
-  // Unwrap params if it's a Promise
-  const unwrappedParams = params instanceof Promise ? use(params) : params;
-  const chatIdString = unwrappedParams.chatId;
+export default function ChatPage({ params }: { params: { chatId: string } }) {
+  const chatIdString = params.chatId;
   
   const { navigateWithLoading } = useLoadingNavigation();
   
