@@ -365,17 +365,18 @@ export const ChatMessages = ({ messages, chatId, onNewMessage, onSourceClick, on
                                     console.log("Source clicked:", {
                                       file: source.file,
                                       page: source.page,
-                                      highlight: source.highlight?.substring(0, 50) + "...",
-                                      key_phrases: source.key_phrases
+                                      highlight: source.highlight?.substring(0, 50) + "..."
                                     });
-                                    onSourceClick && onSourceClick({
-                                      file: source.file,
-                                      page: source.page,
-                                      highlight: source.highlight,
-                                      line_start: source.line_start,
-                                      line_end: source.line_end,
-                                      content: source.content,
-                                    });
+                                    if (onSourceClick) {
+                                      onSourceClick({
+                                        file: source.file,
+                                        page: source.page,
+                                        highlight: source.highlight,
+                                        line_start: source.line_start,
+                                        line_end: source.line_end,
+                                        content: source.content,
+                                      });
+                                    }
                                   }}
                                   onMouseEnter={() => setHoveredSourceIdx(i)}
                                   onMouseLeave={() => setHoveredSourceIdx(null)}

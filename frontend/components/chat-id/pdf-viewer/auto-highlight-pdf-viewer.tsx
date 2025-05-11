@@ -76,10 +76,7 @@ function AutoHighlightPdfViewer({
   const onPageRenderedRef = useRef<(pageNumber: number) => void>();
 
   // Pass a setter to usePdfHighlights so it can register its callback
-  const {
-    highlights,
-    setOnPageRenderedCallback
-  } = usePdfHighlights({
+  const { highlights } = usePdfHighlights({
     highlightSource,
     numPages,
     pdfLoaded,
