@@ -51,8 +51,10 @@ out/
 Thumbs.db
 
 # Uploads
-uploads/
+uploads/*
 !uploads/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
 
 # Logs
 logs/
